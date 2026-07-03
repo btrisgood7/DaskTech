@@ -1,0 +1,252 @@
+import { useState } from 'react'
+import { motion } from 'framer-motion'
+import { Mail, Phone, MapPin, Send, CheckCircle2 } from 'lucide-react'
+import Section, { SectionHeading } from '../components/Section'
+import SocialLinks from '../components/SocialLinks'
+import { contact } from '../utils/siteData'
+import { getWhatsAppLink, getMailLink } from '../utils/links'
+import { fadeUp } from '../utils/motion'
+
+const initialForm = { name: '', email: '', phone: '', message: '' }
+
+export default function Contact() {
+  const [form, setForm] = useState(initialForm)
+  const [errors, setErrors] = useState({})
+  const [sent, setSent] = useState(false)
+
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setForm((f) => ({ ...f, [name]: value }))
+    setErrors((err) => ({ ...err, [name]: undefined }))
+  }
+
+  const validate = () => {
+    const next = {}
+    if (!form.name.trim()) next.name = 'Por favor escribe tu nombre.'
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
+      next.email = 'Introduce un correo válido.'
+    if (!form.message.trim()) next.message = 'Cuéntanos en qué podemos ayudarte.'
+    return next
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const next = validate()
+    if (Object.keys(next).length) {
+      setErrors(next)
+      return
+    }
+    // TODO: conectar a un backend o servicio de formularios (p. ej. Formspree,
+    // un endpoint propio, EmailJS...). Por ahora abrimos WhatsApp con los datos.
+    const summary = `Hola DaskTech, soy ${form.name}.%0A${form.message}%0A%0ACorreo: ${form.email}%0ATel: ${form.phone}`
+    window.open(getWhatsAppLink(decodeURIComponent(summary)), '_blank')
+    setSent(true)
+    setForm(initialForm)
+    setTimeout(() => setSent(false), 6000)
+  }
+
+  const infoItems = [
+    {
+      icon: Mail,
+      label: 'Correo electrónico',
+      value: contact.email,
+      href: getMailLink(),
+    },
+    {
+      icon: Phone,
+      label: 'WhatsApp',
+      value: contact.whatsappDisplay,
+      href: getWhatsAppLink(),
+    },
+    { icon: MapPin, label: 'Ubicación', value: contact.location },
+  ]
+
+  const fieldClass =
+    'w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-slate-500 transition-colors duration-200 focus:border-emerald-brand/60 focus:bg-white/[0.07]'
+
+  return (
+    <Section id="contact">
+      <SectionHeading
+        eyebrow="Contacto"
+        title="Hablemos de tu proyecto"
+        subtitle="Cuéntanos qué necesitas y te responderemos lo antes posible. Sin compromiso."
+      />
+
+      <div className="grid gap-8 lg:grid-cols-5">
+        {/* Información de contacto */}
+        <motion.div variants={fadeUp} className="lg:col-span-2">
+          <div className="glass-card flex h-full flex-col gap-6 p-7">
+            <p className="text-sm leading-relaxed text-slate-400">
+              Elige el canal que prefieras. Estamos listos para ayudarte a llevar tu
+              idea al siguiente nivel.
+            </p>
+
+            <ul className="space-y-4">
+              {infoItems.map((item) => {
+                const content = (
+                  <span className="flex items-center gap-4">
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-gradient text-navy-950">
+                      <item.icon size={20} aria-hidden="true" />
+                    </span>
+                    <span>
+                      <span className="block text-xs uppercase tracking-wide text-slate-500">
+                        {item.label}
+                      </span>
+                      <span className="block text-sm font-medium text-white">
+                        {item.value}
+                      </span>
+                    </span>
+                  </span>
+                )
+                return (
+                  <li key={item.label}>
+                    {item.href ? (
+                      <a
+                        href={item.href}
+                        target={item.href.startsWith('http') ? '_blank' : undefined}
+                        rel="noopener noreferrer"
+                        className="block rounded-xl p-1 transition-colors hover:bg-white/5"
+                      >
+                        {content}
+                      </a>
+                    ) : (
+                      <div className="p-1">{content}</div>
+                    )}
+                  </li>
+                )
+              })}
+            </ul>
+
+            <div className="mt-auto border-t border-white/10 pt-6">
+              <p className="mb-3 text-xs uppercase tracking-wide text-slate-500">
+                Síguenos
+              </p>
+              <SocialLinks />
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Formulario */}
+        <motion.form
+          variants={fadeUp}
+          onSubmit={handleSubmit}
+          noValidate
+          className="glass-card space-y-5 p-7 lg:col-span-3"
+        >
+          <div className="grid gap-5 sm:grid-cols-2">
+            <div>
+              <label htmlFor="name" className="mb-2 block text-sm font-medium text-slate-300">
+                Nombre
+              </label>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                value={form.name}
+                onChange={handleChange}
+                placeholder="Tu nombre"
+                autoComplete="name"
+                aria-invalid={!!errors.name}
+                aria-describedby={errors.name ? 'name-error' : undefined}
+                className={fieldClass}
+              />
+              {errors.name && (
+                <p id="name-error" className="mt-1.5 text-xs text-red-400">
+                  {errors.name}
+                </p>
+              )}
+            </div>
+
+            <div>
+              <label htmlFor="phone" className="mb-2 block text-sm font-medium text-slate-300">
+                Teléfono <span className="text-slate-500">(opcional)</span>
+              </label>
+              <input
+                id="phone"
+                name="phone"
+                type="tel"
+                value={form.phone}
+                onChange={handleChange}
+                placeholder="Tu teléfono"
+                autoComplete="tel"
+                className={fieldClass}
+              />
+            </div>
+          </div>
+
+          <div>
+            <label htmlFor="email" className="mb-2 block text-sm font-medium text-slate-300">
+              Correo
+            </label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              value={form.email}
+              onChange={handleChange}
+              placeholder="tucorreo@ejemplo.com"
+              autoComplete="email"
+              aria-invalid={!!errors.email}
+              aria-describedby={errors.email ? 'email-error' : undefined}
+              className={fieldClass}
+            />
+            {errors.email && (
+              <p id="email-error" className="mt-1.5 text-xs text-red-400">
+                {errors.email}
+              </p>
+            )}
+          </div>
+
+          <div>
+            <label htmlFor="message" className="mb-2 block text-sm font-medium text-slate-300">
+              Mensaje
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              rows={5}
+              value={form.message}
+              onChange={handleChange}
+              placeholder="Cuéntanos sobre tu proyecto o necesidad..."
+              aria-invalid={!!errors.message}
+              aria-describedby={errors.message ? 'message-error' : undefined}
+              className={`${fieldClass} resize-none`}
+            />
+            {errors.message && (
+              <p id="message-error" className="mt-1.5 text-xs text-red-400">
+                {errors.message}
+              </p>
+            )}
+          </div>
+
+          <button
+            type="submit"
+            className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-gradient px-6 py-3.5 text-sm font-semibold text-navy-950 shadow-glow transition-all duration-300 hover:-translate-y-0.5 hover:shadow-glow-gold focus-visible:ring-2 focus-visible:ring-emerald-brand focus-visible:ring-offset-2 focus-visible:ring-offset-navy-950"
+          >
+            {sent ? (
+              <>
+                <CheckCircle2 size={18} aria-hidden="true" />
+                ¡Mensaje listo para enviar!
+              </>
+            ) : (
+              <>
+                Enviar mensaje
+                <Send
+                  size={17}
+                  className="transition-transform duration-300 group-hover:translate-x-0.5"
+                  aria-hidden="true"
+                />
+              </>
+            )}
+          </button>
+
+          <p className="text-center text-xs text-slate-500" role="status">
+            {sent
+              ? 'Abrimos WhatsApp con tu mensaje. ¡Gracias por escribirnos!'
+              : 'Al enviar abriremos WhatsApp con tu mensaje precargado.'}
+          </p>
+        </motion.form>
+      </div>
+    </Section>
+  )
+}

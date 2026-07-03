@@ -1,0 +1,41 @@
+# Dependencias
+node_modules/
+
+# Archivos de compilación
+dist/
+dist-ssr/
+build/
+
+# Variables de entorno
+.env
+.env.*
+!.env.example
+*.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# VS Code
+.vscode/*
+!.vscode/extensions.json
+
+# JetBrains
+.idea/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Cobertura de pruebas
+coverage/
+
+# Caché
+.vite/
+.cache/
+.eslintcache
