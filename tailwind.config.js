@@ -4,28 +4,25 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Modo oscuro elegante: base casi negra (grafito/zinc) con un único
-        // acento verde esmeralda. Sin amarillo neón. Estilo Linear/Vercel.
-        // Nota: se conservan los nombres "navy" para no romper referencias,
-        // pero ahora apuntan a una escala de negros neutros.
+        // Paleta alineada al isotipo: fondo azul marino profundo con
+        // degradado dorado neón → verde fosforescente (tonos vivos,
+        // extraídos de los píxeles más saturados de la imagen del logo).
         navy: {
-          DEFAULT: '#101012',
-          50: '#f4f4f5',
-          100: '#d4d4d8',
-          800: '#18181b',
-          900: '#0e0e10',
-          950: '#09090b',
+          DEFAULT: '#001E38',
+          50: '#f4f7fa',
+          100: '#c9d6e2',
+          800: '#0a2540',
+          900: '#001E38',
+          950: '#000f1f',
         },
         lime: {
-          brand: '#6ee7b7', // menta suave (acento secundario, sutil)
+          brand: '#7CFFC4', // verde menta fosforescente (parte alta del degradado)
         },
         emerald: {
-          brand: '#34d399', // verde principal, más luminoso para buen contraste
+          brand: '#12F29B', // verde neón principal del logo
         },
         gold: {
-          // Reasignado a verde menta para eliminar el amarillo neón sin
-          // tener que editar cada archivo que lo referenciaba.
-          brand: '#6ee7b7',
+          brand: '#FFC700', // dorado neón (parte baja del degradado y nodos)
         },
       },
       fontFamily: {
@@ -34,13 +31,13 @@ export default {
       },
       backgroundImage: {
         'brand-gradient':
-          'linear-gradient(120deg, #6ee7b7 0%, #34d399 55%, #10b981 100%)',
+          'linear-gradient(120deg, #FFC700 0%, #7CFFC4 50%, #12F29B 100%)',
         'navy-radial':
-          'radial-gradient(circle at 50% 0%, rgba(52,211,153,0.10), transparent 60%)',
+          'radial-gradient(circle at 50% 0%, rgba(18,242,155,0.14), transparent 60%)',
       },
       boxShadow: {
-        glow: '0 0 40px -12px rgba(52, 211, 153, 0.35)',
-        'glow-gold': '0 0 44px -12px rgba(110, 231, 183, 0.4)',
+        glow: '0 0 40px -10px rgba(18, 242, 155, 0.55)',
+        'glow-gold': '0 0 44px -10px rgba(255, 199, 0, 0.6)',
         card: '0 10px 40px -15px rgba(0, 0, 0, 0.6)',
       },
       keyframes: {

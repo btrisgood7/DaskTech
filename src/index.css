@@ -15,8 +15,8 @@
   body {
     @apply bg-navy-950 text-slate-100 font-sans antialiased;
     background-image:
-      radial-gradient(900px circle at 12% -12%, rgba(52, 211, 153, 0.10), transparent 45%),
-      radial-gradient(760px circle at 92% 4%, rgba(16, 185, 129, 0.07), transparent 48%);
+      radial-gradient(900px circle at 12% -12%, rgba(18, 242, 155, 0.14), transparent 45%),
+      radial-gradient(760px circle at 92% 4%, rgba(255, 199, 0, 0.09), transparent 48%);
     background-attachment: fixed;
   }
 
@@ -38,7 +38,7 @@
   }
 
   ::selection {
-    background: rgba(52, 211, 153, 0.28);
+    background: rgba(18, 242, 155, 0.32);
   }
 }
 
@@ -69,10 +69,10 @@
   width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #09090b;
+  background: #001E38;
 }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(#10b981, #34d399);
+  background: linear-gradient(#FFC700, #12F29B);
   border-radius: 9999px;
-  border: 2px solid #09090b;
+  border: 2px solid #001E38;
 }

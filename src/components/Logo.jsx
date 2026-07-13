@@ -1,7 +1,8 @@
 /**
  * Logo de DaskTech — recreación vectorial inspirada en el isotipo:
  * una "A" tecnológica con trazos tipo circuito y nodos, en degradado
- * dorado → lima → esmeralda. Escalable y nítido a cualquier tamaño.
+ * dorado → esmeralda (de la base al ápice), sobre fondo azul marino.
+ * Escalable y nítido a cualquier tamaño.
  */
 export default function Logo({ size = 40, withWordmark = false, className = '' }) {
   return (
@@ -16,13 +17,13 @@ export default function Logo({ size = 40, withWordmark = false, className = '' }
       >
         <defs>
           <linearGradient id="dt-bg" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor="#18181b" />
-            <stop offset="1" stopColor="#0b0b0d" />
+            <stop offset="0" stopColor="#0a2540" />
+            <stop offset="1" stopColor="#001E38" />
           </linearGradient>
-          <linearGradient id="dt-stroke" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor="#6ee7b7" />
-            <stop offset="0.55" stopColor="#34d399" />
-            <stop offset="1" stopColor="#10b981" />
+          <linearGradient id="dt-stroke" x1="0" y1="1" x2="0" y2="0">
+            <stop offset="0" stopColor="#FFC700" />
+            <stop offset="0.5" stopColor="#12F29B" />
+            <stop offset="1" stopColor="#7CFFC4" />
           </linearGradient>
         </defs>
         <rect width="100" height="100" rx="22" fill="url(#dt-bg)" />
@@ -35,9 +36,9 @@ export default function Logo({ size = 40, withWordmark = false, className = '' }
         >
           <path d="M22 74 L34 74 L50 26 L66 74 L78 74" />
           <path d="M38 60 L50 38 L62 60 L56 60 L50 70 L44 60 Z" />
-          <circle cx="22" cy="74" r="4.5" fill="url(#dt-stroke)" stroke="none" />
-          <circle cx="78" cy="74" r="4.5" fill="url(#dt-stroke)" stroke="none" />
-          <circle cx="50" cy="70" r="4.5" fill="url(#dt-stroke)" stroke="none" />
+          <circle cx="22" cy="74" r="4.5" fill="#FFC700" stroke="none" />
+          <circle cx="78" cy="74" r="4.5" fill="#FFC700" stroke="none" />
+          <circle cx="50" cy="70" r="4.5" fill="#7CFFC4" stroke="none" />
         </g>
       </svg>
       {withWordmark && (
