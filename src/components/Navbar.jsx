@@ -18,7 +18,7 @@ export default function Navbar() {
     <header
       className={`fixed inset-x-0 top-0 z-40 transition-all duration-300 ${
         scrolled
-          ? 'border-b border-white/10 bg-navy-950/80 backdrop-blur-lg'
+          ? 'border-b border-navy-900/[0.06] bg-white/85 shadow-soft backdrop-blur-lg'
           : 'border-b border-transparent'
       }`}
     >
@@ -27,11 +27,11 @@ export default function Navbar() {
         aria-label="Navegación principal"
       >
         <a href="#hero" aria-label="DaskTech inicio">
-          <Logo size={36} withWordmark />
+          <Logo size={34} withWordmark />
         </a>
 
         {/* Enlaces de escritorio */}
-        <ul className="hidden items-center gap-1 lg:flex">
+        <ul className="hidden items-center gap-0.5 lg:flex">
           {navLinks.map((link) => {
             const id = link.href.replace('#', '')
             const isActive = active === id
@@ -40,14 +40,16 @@ export default function Navbar() {
                 <a
                   href={link.href}
                   className={`relative rounded-full px-3 py-2 text-sm transition-colors duration-200 ${
-                    isActive ? 'text-white' : 'text-slate-300 hover:text-white'
+                    isActive
+                      ? 'text-navy-900'
+                      : 'text-navy-900/60 hover:text-navy-900'
                   }`}
                 >
                   {link.label}
                   {isActive && (
                     <motion.span
                       layoutId="nav-active"
-                      className="absolute inset-x-2 -bottom-0.5 h-0.5 rounded-full bg-brand-gradient"
+                      className="absolute inset-x-3 -bottom-0.5 h-0.5 rounded-full bg-brand-gradient"
                     />
                   )}
                 </a>
@@ -58,7 +60,7 @@ export default function Navbar() {
 
         <div className="hidden lg:block">
           <Button href="#contact" className="px-5 py-2">
-            Contáctanos
+            Hablemos
           </Button>
         </div>
 
@@ -68,7 +70,7 @@ export default function Navbar() {
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
           aria-expanded={open}
-          className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-white lg:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded-xl border border-navy-900/10 bg-white text-navy-900 shadow-soft lg:hidden"
         >
           {open ? <X size={20} /> : <Menu size={20} />}
         </button>
@@ -82,7 +84,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25 }}
-            className="overflow-hidden border-t border-white/10 bg-navy-950/95 backdrop-blur-lg lg:hidden"
+            className="overflow-hidden border-t border-navy-900/[0.06] bg-white/95 backdrop-blur-lg lg:hidden"
           >
             <ul className="section-container flex flex-col gap-1 py-4">
               {navLinks.map((link) => (
@@ -90,7 +92,7 @@ export default function Navbar() {
                   <a
                     href={link.href}
                     onClick={() => setOpen(false)}
-                    className="block rounded-lg px-3 py-2.5 text-slate-200 transition-colors hover:bg-white/5 hover:text-white"
+                    className="block rounded-lg px-3 py-2.5 text-navy-900/70 transition-colors hover:bg-navy-50 hover:text-navy-900"
                   >
                     {link.label}
                   </a>
@@ -98,7 +100,7 @@ export default function Navbar() {
               ))}
               <li className="mt-2 px-1">
                 <Button href="#contact" onClick={() => setOpen(false)} className="w-full">
-                  Contáctanos
+                  Hablemos
                 </Button>
               </li>
             </ul>

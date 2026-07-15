@@ -1,10 +1,3 @@
-/**
- * Datos centralizados del sitio.
- * --------------------------------------------------------------------------
- * 👉 EDITA AQUÍ tus datos reales. Los valores marcados con "TODO" son
- *    placeholders: reemplázalos por tu información de contacto verdadera.
- */
-
 import {
   Boxes,
   Code2,
@@ -30,17 +23,17 @@ import {
 
 export const brand = {
   name: 'DaskTech',
-  slogan: 'Tecnología que impulsa tu negocio',
+  slogan: 'Cuatro amigos, una pasión: la tecnología',
   description:
-    'Soluciones tecnológicas a la medida: desarrollo, automatización, infraestructura y soporte. Convertimos tus retos técnicos en resultados confiables.',
+    'Somos un grupo de 4 amigos que decidimos unir lo que sabemos hacer —desarrollo, datos, redes e infraestructura— para ayudarte a resolver retos reales. Sin vueltas corporativas, con muchas ganas de hacer las cosas bien.',
 }
 
 export const contact = {
   email: 'eyeon6789@gmail.com',
   // Número en formato internacional sin signos para el enlace de WhatsApp
-  whatsappNumber: '5215646162446', // TODO: ej. 52 + 10 dígitos
-  whatsappDisplay: '+52 56 4616 2446', // TODO
-  location: 'Ciudad de México', // TODO: Ciudad, Estado
+  whatsappNumber: '5215646162446',
+  whatsappDisplay: '+52 56 4616 2446',
+  location: 'Ciudad de México',
   // Mensaje precargado al abrir WhatsApp
   whatsappMessage: 'Hola DaskTech, me gustaría más información sobre sus servicios.',
 }
@@ -60,11 +53,46 @@ export const socials = [
 export const navLinks = [
   { label: 'Inicio', href: '#hero' },
   { label: 'Nosotros', href: '#about' },
+  { label: 'Equipo', href: '#team' },
   { label: 'Servicios', href: '#services' },
-  { label: '¿Por qué elegirnos?', href: '#why-us' },
+  { label: '¿Por qué nosotros?', href: '#why-us' },
   { label: 'Tecnologías', href: '#tech' },
   { label: 'Proceso', href: '#process' },
   { label: 'Contacto', href: '#contact' },
+]
+
+/* -------------------------------------------------------------------------- */
+/* Equipo                                                                      */
+/* -------------------------------------------------------------------------- */
+// 👉 TODO: reemplaza nombres, roles, bios y fotos por los datos reales de cada
+//    integrante. Si tienen foto, agrega `photo: '/ruta-a-la-imagen.jpg'` y
+//    TeamCard la usará en vez de las iniciales.
+
+export const team = [
+  {
+    name: 'Nombre Apellido',
+    role: 'Cofundador · Desarrollo Odoo & Python',
+    bio: 'Le encanta convertir procesos enredados en sistemas simples que de verdad funcionan.',
+    stack: ['Odoo', 'Python'],
+  },
+  {
+    name: 'Nombre Apellido',
+    role: 'Cofundador · Bases de Datos & Automatización',
+    bio: 'Vive entre consultas SQL y scripts, buscando que la información fluya sin fricciones.',
+    stack: ['SQL', 'PostgreSQL'],
+  },
+  {
+    name: 'Nombre Apellido',
+    role: 'Cofundador · Redes & Soporte Técnico',
+    bio: 'El que resuelve esa incidencia rara a las 11pm y se queda a ver que todo quede bien.',
+    stack: ['Redes', 'Soporte'],
+  },
+  {
+    name: 'Nombre Apellido',
+    role: 'Cofundador · Infraestructura & Seguridad',
+    bio: 'Cuida que tus equipos, cámaras y espacios funcionen sin sorpresas.',
+    stack: ['CCTV', 'Mantenimiento'],
+  },
 ]
 
 /* -------------------------------------------------------------------------- */
@@ -76,42 +104,42 @@ export const services = [
     icon: Boxes,
     title: 'Desarrollo Odoo',
     description:
-      'Implementamos y adaptamos Odoo a tu operación para que el ERP trabaje a tu favor.',
+      'Adaptamos Odoo a como trabajas de verdad, no al revés. Lo dejamos trabajando a tu favor.',
     tags: ['Implementación', 'Personalización', 'Automatización', 'Integraciones'],
   },
   {
     icon: Code2,
     title: 'Desarrollo en Python',
     description:
-      'Automatizaciones, scripts, APIs y aplicaciones robustas hechas a la medida.',
+      'Scripts, automatizaciones, APIs y pequeñas apps hechas a la medida de tu problema, no de un molde.',
     tags: ['Automatización', 'Scripts', 'APIs', 'Aplicaciones'],
   },
   {
     icon: Database,
     title: 'Bases de datos SQL',
     description:
-      'Diseño, consultas, optimización y administración para que tus datos rindan.',
+      'Diseño, consultas y optimización para que tus datos dejen de ser un dolor de cabeza.',
     tags: ['Diseño', 'Consultas', 'Optimización', 'Administración'],
   },
   {
     icon: Cctv,
     title: 'Cámaras de seguridad',
     description:
-      'Instalación y configuración de CCTV con monitoreo confiable de tus espacios.',
+      'Instalamos y configuramos CCTV para que puedas cuidar tu espacio con tranquilidad.',
     tags: ['Instalación', 'Configuración', 'Monitoreo', 'CCTV'],
   },
   {
     icon: Wrench,
     title: 'Mantenimiento de cómputo',
     description:
-      'Servicio correctivo y preventivo para mantener tus equipos a máximo rendimiento.',
+      'Revisión correctiva y preventiva para que tus equipos no te dejen a medias.',
     tags: ['Correctivo', 'Preventivo', 'Diagnóstico', 'Optimización'],
   },
   {
     icon: Network,
     title: 'Redes y soporte técnico',
     description:
-      'Configuración de redes y soporte remoto o presencial para resolver incidencias.',
+      'Configuramos tu red y estamos ahí, remoto o presencial, cuando algo se traba.',
     tags: ['Redes', 'Soporte remoto', 'Soporte presencial', 'Incidencias'],
   },
 ]
@@ -122,34 +150,34 @@ export const services = [
 
 export const reasons = [
   {
-    icon: ShieldCheck,
-    title: 'Profesionalismo',
-    description: 'Trabajo serio, transparente y orientado a resultados.',
-  },
-  {
-    icon: Award,
-    title: 'Experiencia',
-    description: 'Conocimiento técnico aplicado a proyectos reales.',
-  },
-  {
     icon: HeartHandshake,
-    title: 'Atención personalizada',
-    description: 'Te escuchamos y acompañamos en cada etapa.',
+    title: 'Trato directo, sin intermediarios',
+    description: 'Hablas con quien realmente construye tu proyecto, no con un área de ventas.',
   },
   {
     icon: Puzzle,
-    title: 'Soluciones a medida',
-    description: 'Nada genérico: cada proyecto se adapta a ti.',
+    title: 'Soluciones a tu medida',
+    description: 'Nada de plantillas genéricas: cada proyecto se piensa para ti.',
+  },
+  {
+    icon: ShieldCheck,
+    title: 'Profesionalismo',
+    description: 'Somos chicos, pero serios: comunicación clara y compromisos que cumplimos.',
   },
   {
     icon: Zap,
     title: 'Respuesta rápida',
-    description: 'Tiempos de atención ágiles cuando más lo necesitas.',
+    description: 'Al ser un equipo pequeño, te respondemos rápido y sin burocracia.',
+  },
+  {
+    icon: Award,
+    title: 'Ganas de hacerlo bien',
+    description: 'Estamos empezando y eso nos empuja a cuidar cada detalle de lo que entregamos.',
   },
   {
     icon: BadgeCheck,
-    title: 'Calidad garantizada',
-    description: 'Entregables probados y con seguimiento posterior.',
+    title: 'Acompañamiento real',
+    description: 'No desaparecemos al entregar: seguimos cerca antes, durante y después.',
   },
 ]
 
@@ -178,25 +206,25 @@ export const processSteps = [
   {
     icon: Search,
     step: '01',
-    title: 'Análisis',
-    description: 'Entendemos tu necesidad, objetivos y contexto técnico.',
+    title: 'Platicamos',
+    description: 'Te escuchamos, entendemos tu necesidad y el contexto real detrás de ella.',
   },
   {
     icon: Hammer,
     step: '02',
-    title: 'Desarrollo',
-    description: 'Construimos la solución con buenas prácticas y comunicación constante.',
+    title: 'Construimos',
+    description: 'Manos a la obra, con buenas prácticas y comunicación constante contigo.',
   },
   {
     icon: Rocket,
     step: '03',
-    title: 'Implementación',
-    description: 'Desplegamos, configuramos y validamos que todo funcione.',
+    title: 'Implementamos',
+    description: 'Desplegamos, configuramos y probamos que todo funcione como esperabas.',
   },
   {
     icon: LifeBuoy,
     step: '04',
-    title: 'Soporte',
-    description: 'Acompañamiento continuo y mantenimiento para tu tranquilidad.',
+    title: 'Seguimos cerca',
+    description: 'No te dejamos solo: acompañamiento y soporte después de la entrega.',
   },
 ]

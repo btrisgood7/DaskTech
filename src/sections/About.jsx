@@ -1,28 +1,29 @@
 import { motion } from 'framer-motion'
-import { Target, Users, ShieldCheck, TrendingUp } from 'lucide-react'
+import { Target, Users, HeartHandshake, Rocket } from 'lucide-react'
 import Section, { SectionHeading } from '../components/Section'
 import { fadeUp } from '../utils/motion'
+import { team } from '../utils/siteData'
 
 const pillars = [
   {
     icon: Users,
-    title: 'Quiénes somos',
-    text: 'Un equipo técnico apasionado por resolver problemas reales con tecnología.',
+    title: 'Cómo empezamos',
+    text: 'Cuatro amigos que se conocen desde hace tiempo, cada uno con su especialidad, decidieron construir algo juntos.',
   },
   {
-    icon: TrendingUp,
-    title: 'Experiencia',
-    text: 'Proyectos de desarrollo, datos, seguridad e infraestructura llevados a producción.',
+    icon: Rocket,
+    title: 'En dónde estamos',
+    text: 'Apenas arrancando: por eso le ponemos todas las ganas a cada proyecto que nos confían.',
   },
   {
     icon: Target,
     title: 'Nuestro enfoque',
-    text: 'Soluciones a la medida, prácticas y mantenibles, sin complejidad innecesaria.',
+    text: 'Soluciones prácticas y a la medida, sin complicarte con cosas que no necesitas.',
   },
   {
-    icon: ShieldCheck,
-    title: 'Compromiso',
-    text: 'Acompañamiento cercano y soporte continuo antes, durante y después del proyecto.',
+    icon: HeartHandshake,
+    title: 'Nuestro compromiso',
+    text: 'Trato cercano y honesto, antes, durante y después de terminar el proyecto.',
   },
 ]
 
@@ -30,32 +31,51 @@ export default function About() {
   return (
     <Section id="about">
       <div className="grid items-center gap-14 lg:grid-cols-2">
-        {/* Ilustración tecnológica */}
+        {/* Nota / historia, en lugar de una foto de stock corporativa */}
         <motion.div variants={fadeUp} className="relative order-last lg:order-first">
-          <div className="glass-card relative overflow-hidden p-2">
-            <div className="absolute inset-0 bg-navy-radial" />
-            <div className="relative aspect-[4/3] overflow-hidden rounded-xl">
-              <img
-                src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80"
-                alt="Infraestructura y placas de circuitos representando el trabajo tecnológico de DaskTech"
-                loading="lazy"
-                className="h-full w-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-transparent to-transparent" />
+          <div className="card relative overflow-hidden p-6 sm:p-8">
+            <span className="mono-label">
+              <span className="text-emerald-brand">//</span> nuestra historia
+            </span>
+            <p className="mt-4 font-display text-xl font-semibold leading-relaxed text-navy-900 sm:text-2xl">
+              “Cada quien traía su especialidad —desarrollo, datos, redes, soporte— y un
+              día dijimos: <span className="marker">hagámoslo juntos</span>.”
+            </p>
+
+            <div className="mt-8 flex flex-wrap gap-5">
+              {team.map((member) => {
+                const initials = member.name
+                  .split(' ')
+                  .map((w) => w.charAt(0))
+                  .slice(0, 2)
+                  .join('')
+                  .toUpperCase()
+                return (
+                  <div key={member.name} className="flex flex-col items-center gap-2">
+                    <span className="flex h-14 w-14 rotate-[-3deg] items-center justify-center rounded-2xl bg-brand-gradient font-display text-base font-bold text-navy-900 shadow-soft">
+                      {initials}
+                    </span>
+                    <span className="font-mono text-xs text-navy-900/50">
+                      {member.name.split(' ')[0]}
+                    </span>
+                  </div>
+                )
+              })}
             </div>
           </div>
+
           {/* Tarjeta flotante */}
           <motion.div
             animate={{ y: [0, -8, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-            className="glass-card absolute -bottom-6 -right-4 hidden items-center gap-3 p-4 shadow-glow sm:flex"
+            className="card absolute -bottom-6 -right-3 hidden items-center gap-3 p-4 shadow-lift sm:flex"
           >
-            <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-gradient text-navy-950">
-              <ShieldCheck size={20} />
+            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-navy-900 text-white">
+              <HeartHandshake size={20} aria-hidden="true" />
             </span>
             <div>
-              <p className="text-sm font-semibold text-white">Calidad garantizada</p>
-              <p className="text-xs text-slate-400">Entregables probados</p>
+              <p className="text-sm font-semibold text-navy-900">Somos 4, no 400</p>
+              <p className="font-mono text-xs text-navy-900/50">y así nos gusta</p>
             </div>
           </motion.div>
         </motion.div>
@@ -64,20 +84,20 @@ export default function About() {
         <div>
           <SectionHeading
             align="left"
-            eyebrow="Sobre nosotros"
-            title="Tecnología confiable, hecha a tu medida"
-            subtitle="En DaskTech combinamos conocimiento técnico y atención cercana para entregar soluciones que realmente funcionan para tu negocio."
+            eyebrow="sobre nosotros"
+            title="Un proyecto entre amigos, hecho con ganas de crecer"
+            subtitle="Somos DaskTech: un pequeño equipo que combina conocimiento técnico y atención cercana para entregarte soluciones que de verdad funcionan."
           />
 
-          <div className="grid gap-5 sm:grid-cols-2">
+          <div className="grid gap-6 sm:grid-cols-2">
             {pillars.map((p) => (
               <motion.div key={p.title} variants={fadeUp} className="flex gap-3">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-emerald-brand">
-                  <p.icon size={20} aria-hidden="true" />
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-navy-900/[0.08] bg-navy-50 text-navy-900">
+                  <p.icon size={19} aria-hidden="true" />
                 </span>
                 <div>
-                  <h3 className="font-semibold text-white">{p.title}</h3>
-                  <p className="mt-1 text-sm leading-relaxed text-slate-400">{p.text}</p>
+                  <h3 className="font-display font-semibold text-navy-900">{p.title}</h3>
+                  <p className="mt-1 text-sm leading-relaxed text-navy-900/60">{p.text}</p>
                 </div>
               </motion.div>
             ))}

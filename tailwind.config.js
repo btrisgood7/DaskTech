@@ -4,9 +4,6 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Paleta alineada al isotipo: fondo azul marino profundo con
-        // degradado dorado neón → verde fosforescente (tonos vivos,
-        // extraídos de los píxeles más saturados de la imagen del logo).
         navy: {
           DEFAULT: '#001E38',
           50: '#f4f7fa',
@@ -16,29 +13,28 @@ export default {
           950: '#000f1f',
         },
         lime: {
-          brand: '#7CFFC4', // verde menta fosforescente (parte alta del degradado)
+          brand: '#7CFFC4',
         },
         emerald: {
-          brand: '#12F29B', // verde neón principal del logo
+          brand: '#12F29B',
         },
         gold: {
-          brand: '#FFC700', // dorado neón (parte baja del degradado y nodos)
+          brand: '#FFC700',
         },
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
-        display: ['"Space Grotesk"', 'Inter', 'sans-serif'],
+        display: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'monospace'],
       },
       backgroundImage: {
         'brand-gradient':
           'linear-gradient(120deg, #FFC700 0%, #7CFFC4 50%, #12F29B 100%)',
-        'navy-radial':
-          'radial-gradient(circle at 50% 0%, rgba(18,242,155,0.14), transparent 60%)',
       },
       boxShadow: {
-        glow: '0 0 40px -10px rgba(18, 242, 155, 0.55)',
-        'glow-gold': '0 0 44px -10px rgba(255, 199, 0, 0.6)',
-        card: '0 10px 40px -15px rgba(0, 0, 0, 0.6)',
+        soft: '0 1px 2px rgba(0, 30, 56, 0.04), 0 8px 24px -12px rgba(0, 30, 56, 0.12)',
+        lift: '0 6px 16px -6px rgba(0, 30, 56, 0.14), 0 20px 40px -24px rgba(0, 30, 56, 0.20)',
+        glow: '0 0 40px -14px rgba(18, 242, 155, 0.45)',
       },
       keyframes: {
         float: {
@@ -46,19 +42,14 @@ export default {
           '50%': { transform: 'translateY(-12px)' },
         },
         'pulse-ring': {
-          '0%': { transform: 'scale(0.9)', opacity: '0.7' },
+          '0%': { transform: 'scale(0.9)', opacity: '0.6' },
           '70%': { transform: 'scale(1.3)', opacity: '0' },
           '100%': { opacity: '0' },
-        },
-        shimmer: {
-          '0%': { backgroundPosition: '0% 50%' },
-          '100%': { backgroundPosition: '100% 50%' },
         },
       },
       animation: {
         float: 'float 6s ease-in-out infinite',
         'pulse-ring': 'pulse-ring 2.5s cubic-bezier(0.4,0,0.6,1) infinite',
-        shimmer: 'shimmer 8s linear infinite alternate',
       },
     },
   },

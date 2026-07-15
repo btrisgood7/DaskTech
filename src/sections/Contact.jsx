@@ -62,37 +62,37 @@ export default function Contact() {
   ]
 
   const fieldClass =
-    'w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-slate-500 transition-colors duration-200 focus:border-emerald-brand/60 focus:bg-white/[0.07]'
+    'w-full rounded-xl border border-navy-900/15 bg-white px-4 py-3 text-sm text-navy-900 placeholder:text-navy-900/35 transition-colors duration-200 focus:border-emerald-brand focus:outline-none'
 
   return (
     <Section id="contact">
       <SectionHeading
-        eyebrow="Contacto"
-        title="Hablemos de tu proyecto"
-        subtitle="Cuéntanos qué necesitas y te responderemos lo antes posible. Sin compromiso."
+        eyebrow="contacto"
+        title="Cuéntanos tu idea, te leemos"
+        subtitle="Uno de nosotros te va a responder directamente, sin filtros ni intermediarios. Sin compromiso."
       />
 
       <div className="grid gap-8 lg:grid-cols-5">
         {/* Información de contacto */}
         <motion.div variants={fadeUp} className="lg:col-span-2">
-          <div className="glass-card flex h-full flex-col gap-6 p-7">
-            <p className="text-sm leading-relaxed text-slate-400">
-              Elige el canal que prefieras. Estamos listos para ayudarte a llevar tu
-              idea al siguiente nivel.
+          <div className="card flex h-full flex-col gap-6 p-7">
+            <p className="text-sm leading-relaxed text-navy-900/60">
+              Elige el canal que prefieras. Somos pocos, así que tu mensaje no se pierde
+              en ninguna bandeja: lo lee el equipo directamente.
             </p>
 
-            <ul className="space-y-4">
+            <ul className="space-y-3">
               {infoItems.map((item) => {
                 const content = (
                   <span className="flex items-center gap-4">
-                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-gradient text-navy-950">
-                      <item.icon size={20} aria-hidden="true" />
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-navy-900 text-white">
+                      <item.icon size={19} aria-hidden="true" />
                     </span>
                     <span>
-                      <span className="block text-xs uppercase tracking-wide text-slate-500">
+                      <span className="block font-mono text-xs text-navy-900/50">
                         {item.label}
                       </span>
-                      <span className="block text-sm font-medium text-white">
+                      <span className="block text-sm font-medium text-navy-900">
                         {item.value}
                       </span>
                     </span>
@@ -105,7 +105,7 @@ export default function Contact() {
                         href={item.href}
                         target={item.href.startsWith('http') ? '_blank' : undefined}
                         rel="noopener noreferrer"
-                        className="block rounded-xl p-1 transition-colors hover:bg-white/5"
+                        className="block rounded-xl p-1 transition-colors hover:bg-navy-50"
                       >
                         {content}
                       </a>
@@ -117,10 +117,8 @@ export default function Contact() {
               })}
             </ul>
 
-            <div className="mt-auto border-t border-white/10 pt-6">
-              <p className="mb-3 text-xs uppercase tracking-wide text-slate-500">
-                Síguenos
-              </p>
+            <div className="mt-auto border-t border-navy-900/[0.08] pt-6">
+              <p className="mb-3 font-mono text-xs text-navy-900/50">síguenos</p>
               <SocialLinks />
             </div>
           </div>
@@ -131,11 +129,11 @@ export default function Contact() {
           variants={fadeUp}
           onSubmit={handleSubmit}
           noValidate
-          className="glass-card space-y-5 p-7 lg:col-span-3"
+          className="card space-y-5 p-7 lg:col-span-3"
         >
           <div className="grid gap-5 sm:grid-cols-2">
             <div>
-              <label htmlFor="name" className="mb-2 block text-sm font-medium text-slate-300">
+              <label htmlFor="name" className="mb-2 block text-sm font-medium text-navy-900/80">
                 Nombre
               </label>
               <input
@@ -151,15 +149,15 @@ export default function Contact() {
                 className={fieldClass}
               />
               {errors.name && (
-                <p id="name-error" className="mt-1.5 text-xs text-red-400">
+                <p id="name-error" className="mt-1.5 text-xs text-red-500">
                   {errors.name}
                 </p>
               )}
             </div>
 
             <div>
-              <label htmlFor="phone" className="mb-2 block text-sm font-medium text-slate-300">
-                Teléfono <span className="text-slate-500">(opcional)</span>
+              <label htmlFor="phone" className="mb-2 block text-sm font-medium text-navy-900/80">
+                Teléfono <span className="text-navy-900/40">(opcional)</span>
               </label>
               <input
                 id="phone"
@@ -175,7 +173,7 @@ export default function Contact() {
           </div>
 
           <div>
-            <label htmlFor="email" className="mb-2 block text-sm font-medium text-slate-300">
+            <label htmlFor="email" className="mb-2 block text-sm font-medium text-navy-900/80">
               Correo
             </label>
             <input
@@ -191,14 +189,14 @@ export default function Contact() {
               className={fieldClass}
             />
             {errors.email && (
-              <p id="email-error" className="mt-1.5 text-xs text-red-400">
+              <p id="email-error" className="mt-1.5 text-xs text-red-500">
                 {errors.email}
               </p>
             )}
           </div>
 
           <div>
-            <label htmlFor="message" className="mb-2 block text-sm font-medium text-slate-300">
+            <label htmlFor="message" className="mb-2 block text-sm font-medium text-navy-900/80">
               Mensaje
             </label>
             <textarea
@@ -213,7 +211,7 @@ export default function Contact() {
               className={`${fieldClass} resize-none`}
             />
             {errors.message && (
-              <p id="message-error" className="mt-1.5 text-xs text-red-400">
+              <p id="message-error" className="mt-1.5 text-xs text-red-500">
                 {errors.message}
               </p>
             )}
@@ -221,7 +219,7 @@ export default function Contact() {
 
           <button
             type="submit"
-            className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-gradient px-6 py-3.5 text-sm font-semibold text-navy-950 shadow-glow transition-all duration-300 hover:-translate-y-0.5 hover:shadow-glow-gold focus-visible:ring-2 focus-visible:ring-emerald-brand focus-visible:ring-offset-2 focus-visible:ring-offset-navy-950"
+            className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-navy-900 px-6 py-3.5 text-sm font-semibold text-white shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:bg-navy-800 hover:shadow-lift focus-visible:ring-2 focus-visible:ring-navy-900 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
           >
             {sent ? (
               <>
@@ -240,7 +238,7 @@ export default function Contact() {
             )}
           </button>
 
-          <p className="text-center text-xs text-slate-500" role="status">
+          <p className="text-center font-mono text-xs text-navy-900/45" role="status">
             {sent
               ? 'Abrimos WhatsApp con tu mensaje. ¡Gracias por escribirnos!'
               : 'Al enviar abriremos WhatsApp con tu mensaje precargado.'}

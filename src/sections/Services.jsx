@@ -6,9 +6,9 @@ export default function Services() {
   return (
     <Section id="services">
       <SectionHeading
-        eyebrow="Servicios"
-        title="Lo que podemos hacer por ti"
-        subtitle="Desde el desarrollo de software hasta la infraestructura física, cubrimos las necesidades tecnológicas de tu empresa en un solo lugar."
+        eyebrow="servicios"
+        title="Esto es lo que sabemos hacer"
+        subtitle="Entre los cuatro cubrimos desde el desarrollo de software hasta el soporte técnico del día a día. Cuéntanos qué necesitas y vemos cómo ayudarte."
       />
 
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

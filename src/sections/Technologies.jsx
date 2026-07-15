@@ -3,29 +3,29 @@ import Section, { SectionHeading } from '../components/Section'
 import { technologies } from '../utils/siteData'
 import { scaleIn } from '../utils/motion'
 
+// Pequeña rotación de acentos de marca para los puntos de cada pill.
+const dots = ['bg-emerald-brand', 'bg-gold-brand', 'bg-lime-brand']
+
 export default function Technologies() {
   return (
     <Section id="tech">
       <SectionHeading
-        eyebrow="Tecnologías"
-        title="Herramientas con las que trabajamos"
-        subtitle="Stack moderno y probado para construir soluciones rápidas, seguras y escalables."
+        eyebrow="tecnologías"
+        title="Con esto trabajamos día a día"
+        subtitle="Un stack moderno que dominamos bien, para construir soluciones rápidas, seguras y que crecen contigo."
       />
 
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-5">
-        {technologies.map((tech) => (
-          <motion.div
+      <div className="mx-auto flex max-w-3xl flex-wrap justify-center gap-3">
+        {technologies.map((tech, i) => (
+          <motion.span
             key={tech.name}
             variants={scaleIn}
-            whileHover={{ y: -6 }}
-            className="glass-card group flex flex-col items-center justify-center gap-3 p-6 transition-colors duration-300 hover:border-emerald-brand/40"
+            whileHover={{ y: -4 }}
+            className="inline-flex items-center gap-2 rounded-full border border-navy-900/10 bg-white px-4 py-2 font-mono text-sm text-navy-900 shadow-soft transition-colors duration-300 hover:border-emerald-brand/60"
           >
-            {/* Inicial dentro de un disco con degradado de marca */}
-            <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-gradient font-display text-xl font-bold text-navy-950 shadow-glow transition-transform duration-300 group-hover:scale-110">
-              {tech.name.charAt(0)}
-            </span>
-            <span className="text-sm font-medium text-slate-200">{tech.name}</span>
-          </motion.div>
+            <span className={`h-2 w-2 rounded-full ${dots[i % dots.length]}`} />
+            {tech.name}
+          </motion.span>
         ))}
       </div>
     </Section>

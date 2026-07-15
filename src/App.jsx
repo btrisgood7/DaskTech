@@ -2,6 +2,7 @@ import Navbar from './components/Navbar'
 import WhatsAppButton from './components/WhatsAppButton'
 import Hero from './sections/Hero'
 import About from './sections/About'
+import Team from './sections/Team'
 import Services from './sections/Services'
 import WhyUs from './sections/WhyUs'
 import Technologies from './sections/Technologies'
@@ -25,6 +26,7 @@ export default function App() {
       <main id="main">
         <Hero />
         <About />
+        <Team />
         <Services />
         <WhyUs />
         <Technologies />

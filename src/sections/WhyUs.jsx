@@ -4,11 +4,11 @@ import { reasons } from '../utils/siteData'
 
 export default function WhyUs() {
   return (
-    <Section id="why-us">
+    <Section id="why-us" className="surface-soft">
       <SectionHeading
-        eyebrow="¿Por qué elegirnos?"
-        title="Razones para confiar en DaskTech"
-        subtitle="No solo entregamos proyectos: construimos relaciones de largo plazo basadas en resultados y confianza."
+        eyebrow="por qué nosotros"
+        title="Razones para darnos una oportunidad"
+        subtitle="Somos un equipo pequeño buscando construir confianza, un proyecto a la vez. Esto es lo que puedes esperar de nosotros."
       />
 
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

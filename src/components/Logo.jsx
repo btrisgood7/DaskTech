@@ -6,7 +6,7 @@
  */
 export default function Logo({ size = 40, withWordmark = false, className = '' }) {
   return (
-    <span className={`inline-flex items-center gap-3 ${className}`}>
+    <span className={`inline-flex items-center gap-2.5 ${className}`}>
       <svg
         width={size}
         height={size}
@@ -42,8 +42,8 @@ export default function Logo({ size = 40, withWordmark = false, className = '' }
         </g>
       </svg>
       {withWordmark && (
-        <span className="font-display text-xl font-bold tracking-tight text-white">
-          Dask<span className="text-gradient">Tech</span>
+        <span className="font-display text-xl font-bold tracking-tight text-navy-900">
+          Dask<span className="text-navy-900/45">Tech</span>
         </span>
       )}
     </span>
