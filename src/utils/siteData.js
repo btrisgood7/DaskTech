@@ -25,14 +25,14 @@ export const brand = {
   name: 'DaskTech',
   slogan: 'Cuatro amigos, una pasión: la tecnología',
   description:
-    'Somos un grupo de 4 amigos que decidimos unir lo que sabemos hacer —desarrollo, datos, redes e infraestructura— para ayudarte a resolver retos reales. Sin vueltas corporativas, con muchas ganas de hacer las cosas bien.',
+    'Cuatro amigos, café, código y un montón de ideas.',
 }
 
 export const contact = {
   email: 'eyeon6789@gmail.com',
   // Número en formato internacional sin signos para el enlace de WhatsApp
-  whatsappNumber: '5215646162446',
-  whatsappDisplay: '+52 56 4616 2446',
+  whatsappNumber: '5215551083234',
+  whatsappDisplay: '+52 55 5108 3234',
   location: 'Ciudad de México',
   // Mensaje precargado al abrir WhatsApp
   whatsappMessage: 'Hola DaskTech, me gustaría más información sobre sus servicios.',
@@ -61,37 +61,36 @@ export const navLinks = [
   { label: 'Contacto', href: '#contact' },
 ]
 
-/* -------------------------------------------------------------------------- */
-/* Equipo                                                                      */
-/* -------------------------------------------------------------------------- */
-// 👉 TODO: reemplaza nombres, roles, bios y fotos por los datos reales de cada
-//    integrante. Si tienen foto, agrega `photo: '/ruta-a-la-imagen.jpg'` y
-//    TeamCard la usará en vez de las iniciales.
+
 
 export const team = [
   {
-    name: 'Nombre Apellido',
+    name: 'Celia Hernandez',
     role: 'Cofundador · Desarrollo Odoo & Python',
     bio: 'Le encanta convertir procesos enredados en sistemas simples que de verdad funcionan.',
-    stack: ['Odoo', 'Python'],
+    stack: ['Odoo', 'Python','Soporte'],
+    photo: 'team/celia1.jpeg',
   },
   {
-    name: 'Nombre Apellido',
-    role: 'Cofundador · Bases de Datos & Automatización',
-    bio: 'Vive entre consultas SQL y scripts, buscando que la información fluya sin fricciones.',
-    stack: ['SQL', 'PostgreSQL'],
+    name: 'Saori Crisanto',
+    role: 'Cofundador · Desarrollo Full Stack',
+    bio: 'Convierte ideas en código, uniendo diseño y lógica para crear experiencias web completas.',
+    stack: ['PHP', 'Laravel','Odoo'],
+    photo: 'team/saori.jpeg',
   },
   {
-    name: 'Nombre Apellido',
+    name: 'Kirsten Robles',
     role: 'Cofundador · Redes & Soporte Técnico',
-    bio: 'El que resuelve esa incidencia rara a las 11pm y se queda a ver que todo quede bien.',
-    stack: ['Redes', 'Soporte'],
+    bio: 'Convierte ideas en aplicaciones que caben en tu bolsillo, cuidando cada pantalla, interacción y detalle.',
+    stack: ['Flutter', 'Dart'],
+    photo: ['team/kirsten.jpeg']
   },
   {
-    name: 'Nombre Apellido',
-    role: 'Cofundador · Infraestructura & Seguridad',
+    name: 'Diego Guerrero',
+    role: 'Cofundador · Infraestructura, redes y soporte técnico',
     bio: 'Cuida que tus equipos, cámaras y espacios funcionen sin sorpresas.',
-    stack: ['CCTV', 'Mantenimiento'],
+    stack: ['CCTV','SQL','Java'],
+    photo: ['team/diego.jpeg']
   },
 ]
 

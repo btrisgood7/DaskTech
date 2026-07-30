@@ -7,7 +7,7 @@ export default function Team() {
     <Section id="team" className="surface-soft">
       <SectionHeading
         eyebrow="el equipo"
-        title="Somos 4 amigos, no una corporación"
+        title="Nuestro Equipo"
         subtitle="Nos conocemos desde hace tiempo, nos gusta la tecnología y un día decidimos juntar lo que sabemos hacer para ayudarte a resolver problemas reales."
       />
 

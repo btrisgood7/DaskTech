@@ -30,7 +30,7 @@ export default function Hero() {
         <motion.div variants={staggerContainer(0.13)} initial="hidden" animate="show">
           <motion.span variants={fadeUp} className="mono-label">
             <span className="flex h-2 w-2 rounded-full bg-emerald-brand" />
-            hola, somos un equipo pequeño
+            Somos un equipo pequeño, pero con grandes ideas!
           </motion.span>
 
           <motion.h1

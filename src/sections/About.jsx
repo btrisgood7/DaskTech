@@ -51,10 +51,21 @@ export default function About() {
                   .join('')
                   .toUpperCase()
                 return (
+                  
                   <div key={member.name} className="flex flex-col items-center gap-2">
-                    <span className="flex h-14 w-14 rotate-[-3deg] items-center justify-center rounded-2xl bg-brand-gradient font-display text-base font-bold text-navy-900 shadow-soft">
-                      {initials}
-                    </span>
+                    {member.photo ? (
+                      <img
+                        src={member.photo}
+                        alt={member.name}
+                        loading="lazy"
+                        className="h-14 w-14 rotate-[-3deg] rounded-2xl object-cover shadow-soft"
+                      />
+                    ) : (
+                      <span className="flex h-14 w-14 rotate-[-3deg] items-center justify-center rounded-2xl bg-brand-gradient font-display text-base font-bold text-navy-900 shadow-soft">
+                        {initials}
+                      </span>
+                    )}
+
                     <span className="font-mono text-xs text-navy-900/50">
                       {member.name.split(' ')[0]}
                     </span>
