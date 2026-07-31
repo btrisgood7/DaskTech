@@ -6,6 +6,7 @@ import SocialLinks from '../components/SocialLinks'
 import { contact } from '../utils/siteData'
 import { getWhatsAppLink, getMailLink } from '../utils/links'
 import { fadeUp } from '../utils/motion'
+import { supabase } from '../lib/supabase'
 
 const initialForm = { name: '', email: '', phone: '', message: '' }
 
@@ -13,12 +14,37 @@ export default function Contact() {
   const [form, setForm] = useState(initialForm)
   const [errors, setErrors] = useState({})
   const [sent, setSent] = useState(false)
+  const [submitError, setSubmitError] = useState('')
+
 
   const handleChange = (e) => {
     const { name, value } = e.target
-    setForm((f) => ({ ...f, [name]: value }))
-    setErrors((err) => ({ ...err, [name]: undefined }))
+
+    let newValue = value
+
+    // El teléfono solamente acepta números y máximo 10 dígitos
+    if (name === 'phone') {
+      newValue = value.replace(/\D/g, '').slice(0, 10)
+    }
+
+    // El correo no acepta espacios
+    if (name === 'email') {
+      newValue = value.replace(/\s/g, '')
+    }
+
+    setForm((previousForm) => ({
+      ...previousForm,
+      [name]: newValue,
+    }))
+
+    // Elimina el error cuando el usuario comienza a corregir el campo
+    setErrors((previousErrors) => ({
+      ...previousErrors,
+      [name]: undefined,
+    }))
   }
+
+
 
   const validate = () => {
     const next = {}
@@ -29,20 +55,51 @@ export default function Contact() {
     return next
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
+
     const next = validate()
+
     if (Object.keys(next).length) {
       setErrors(next)
       return
     }
-    // TODO: conectar a un backend o servicio de formularios (p. ej. Formspree,
-    // un endpoint propio, EmailJS...). Por ahora abrimos WhatsApp con los datos.
-    const summary = `Hola DaskTech, soy ${form.name}.%0A${form.message}%0A%0ACorreo: ${form.email}%0ATel: ${form.phone}`
-    window.open(getWhatsAppLink(decodeURIComponent(summary)), '_blank')
-    setSent(true)
-    setForm(initialForm)
-    setTimeout(() => setSent(false), 6000)
+
+    setSubmitting(true)
+    setSubmitError('')
+    setSent(false)
+
+    const cleanForm = {
+      name: form.name.trim(),
+      email: form.email.trim().toLowerCase(),
+      phone: form.phone.trim() || null,
+      message: form.message.trim(),
+    }
+
+    try {
+      const { error } = await supabase
+        .from('contact_messages')
+        .insert(cleanForm)
+
+      if (error) {
+        throw error
+      }
+
+      setSent(true)
+      setForm(initialForm)
+
+      setTimeout(() => {
+        setSent(false)
+      }, 6000)
+    } catch (error) {
+      console.error('Error al guardar el formulario:', error)
+
+      setSubmitError(
+        'No pudimos guardar tu mensaje. Inténtalo nuevamente o escríbenos por WhatsApp.'
+      )
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   const infoItems = [
@@ -163,10 +220,21 @@ export default function Contact() {
                 id="phone"
                 name="phone"
                 type="tel"
+                inputMode="numeric"
+                pattern="[0-9]*"
                 value={form.phone}
-                onChange={handleChange}
+                onChange={(event) => {
+                  const onlyNumbers = event.target.value.replace(/\D/g, "");
+
+                  setForm((previousForm) => ({
+                    ...previousForm,
+                    phone: onlyNumbers,
+                  }));
+                }}
+                /*onChange={handleChange}*/
                 placeholder="Tu teléfono"
                 autoComplete="tel"
+                maxLength={10}
                 className={fieldClass}
               />
             </div>
@@ -237,6 +305,10 @@ export default function Contact() {
               </>
             )}
           </button>
+
+
+
+          
 
           <p className="text-center font-mono text-xs text-navy-900/45" role="status">
             {sent

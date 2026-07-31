@@ -39,3 +39,8 @@ coverage/
 .vite/
 .cache/
 .eslintcache
+
+# Archivos temporales de Vite (config timestamps)
+vite.config.js.timestamp-*
+vite.config.*.timestamp-*
+*.timestamp-*.mjs
