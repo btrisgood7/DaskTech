@@ -1,9 +1,5 @@
 import { useEffect, useState } from 'react'
 
-/**
- * Observa las secciones indicadas y devuelve el id de la que está
- * actualmente visible, para resaltar el enlace activo en la navegación.
- */
 export function useActiveSection(ids = []) {
   const [active, setActive] = useState(ids[0] ?? '')
 

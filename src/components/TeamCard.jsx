@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { fadeUp } from '../utils/motion'
 
-/** Tarjeta de integrante del equipo: avatar con iniciales, rol, bio y stack. */
+/** Tarjeta de integrantes del equipo: avatar con iniciales, rol, bio y stack. */
 export default function TeamCard({ name, role, bio, stack = [], photo }) {
   const initials = name
     .split(' ')

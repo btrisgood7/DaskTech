@@ -1,10 +1,6 @@
 import { motion } from 'framer-motion'
 import { revealOnScroll, staggerContainer } from '../utils/motion'
 
-/**
- * Envoltorio de sección con padding consistente, id para anclaje y
- * animación de aparición escalonada al hacer scroll.
- */
 export default function Section({ id, children, className = '', containerClassName = '' }) {
   return (
     <section id={id} className={`scroll-mt-24 py-20 sm:py-24 ${className}`}>
@@ -19,11 +15,6 @@ export default function Section({ id, children, className = '', containerClassNa
   )
 }
 
-/**
- * Encabezado estandarizado para cada sección.
- * El "eyebrow" se muestra como un comentario de código (guiño dev) en
- * tipografía monoespaciada.
- */
 export function SectionHeading({ eyebrow, title, subtitle, align = 'center' }) {
   const alignment = align === 'center' ? 'mx-auto text-center' : 'text-left'
   return (

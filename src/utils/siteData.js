@@ -34,7 +34,7 @@ export const contact = {
   whatsappNumber: '5215551083234',
   whatsappDisplay: '+52 55 5108 3234',
   location: 'Ciudad de México',
-  // Mensaje precargado al abrir WhatsApp
+  // Mensaje para el precargado al abrir WhatsApp
   whatsappMessage: 'Hola DaskTech, me gustaría más información sobre sus servicios.',
 }
 

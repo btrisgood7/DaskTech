@@ -1,7 +1,7 @@
 import { MessageCircle } from 'lucide-react'
 import { getWhatsAppLink } from '../utils/links'
 
-/** Botón flotante de WhatsApp fijo en la esquina inferior derecha. */
+/** Widget de WhatsApp en la esquina inferior derecha. */
 export default function WhatsAppButton() {
   return (
     <a

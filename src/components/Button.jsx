@@ -1,8 +1,3 @@
-/**
- * Botón reutilizable con tres variantes (primary / secondary / ghost) y
- * soporte para renderizarse como <a> o <button>. Estilo del tema claro:
- * primario en navy sólido — limpio y confiado, sin glows pesados.
- */
 export default function Button({
   as = 'a',
   variant = 'primary',

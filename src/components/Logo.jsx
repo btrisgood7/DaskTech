@@ -1,9 +1,3 @@
-/**
- * Logo de DaskTech — recreación vectorial inspirada en el isotipo:
- * una "A" tecnológica con trazos tipo circuito y nodos, en degradado
- * dorado → esmeralda (de la base al ápice), sobre fondo azul marino.
- * Escalable y nítido a cualquier tamaño.
- */
 export default function Logo({ size = 40, withWordmark = false, className = '' }) {
   return (
     <span className={`inline-flex items-center gap-2.5 ${className}`}>

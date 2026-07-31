@@ -1,8 +1,3 @@
-/**
- * Variantes reutilizables de Framer Motion.
- * Mantienen las animaciones consistentes y discretas en todo el sitio.
- */
-
 export const fadeUp = {
   hidden: { opacity: 0, y: 28 },
   show: {

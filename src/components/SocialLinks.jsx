@@ -8,7 +8,7 @@ const iconMap = {
   instagram: Instagram,
 }
 
-/** Lista de enlaces a redes sociales con iconos accesibles. */
+/** Lista de enlaces a redes sociales. */
 export default function SocialLinks({ className = '' }) {
   return (
     <ul className={`flex items-center gap-2.5 ${className}`}>

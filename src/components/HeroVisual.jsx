@@ -1,12 +1,6 @@
 import { motion } from 'framer-motion'
 import { Boxes, Code2, Database, Cctv, Network, Terminal } from 'lucide-react'
 
-/**
- * Visual del Hero — una "ventana de editor" ligera con un fragmento de
- * código amistoso, rodeada de stickers de tecnología que flotan suave.
- * Transmite un estudio pequeño de desarrollo, cercano y hecho a mano.
- */
-
 const stickers = [
   { Icon: Boxes, className: '-left-5 top-6 rotate-[-8deg]', delay: 0 },
   { Icon: Database, className: '-right-4 top-16 rotate-[7deg]', delay: 0.5 },

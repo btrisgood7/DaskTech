@@ -15,6 +15,7 @@ export default function Contact() {
   const [errors, setErrors] = useState({})
   const [sent, setSent] = useState(false)
   const [submitError, setSubmitError] = useState('')
+  const [submitting, setSubmitting] = useState(false)
 
 
   const handleChange = (e) => {
@@ -45,13 +46,39 @@ export default function Contact() {
   }
 
 
-
+/*
   const validate = () => {
     const next = {}
     if (!form.name.trim()) next.name = 'Por favor escribe tu nombre.'
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
       next.email = 'Introduce un correo válido.'
     if (!form.message.trim()) next.message = 'Cuéntanos en qué podemos ayudarte.'
+    return next
+  }*/
+
+  const validate = () => {
+    const next = {}
+
+    if (form.name.trim().length < 2) {
+      next.name = 'Escribe un nombre de al menos 2 caracteres.'
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) {
+      next.email = 'Introduce un correo válido.'
+    }
+
+    if (form.phone.trim() && form.phone.trim().length < 7) {
+      next.phone = 'Introduce un teléfono válido.'
+    }
+
+    if (form.message.trim().length < 10) {
+      next.message = 'Escribe un mensaje de al menos 10 caracteres.'
+    }
+
+    if (form.message.trim().length > 3000) {
+      next.message = 'El mensaje no puede superar los 3000 caracteres.'
+    }
+
     return next
   }
 
@@ -287,12 +314,21 @@ export default function Contact() {
 
           <button
             type="submit"
-            className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-navy-900 px-6 py-3.5 text-sm font-semibold text-white shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:bg-navy-800 hover:shadow-lift focus-visible:ring-2 focus-visible:ring-navy-900 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+            disabled={submitting}
+            className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-navy-900 px-6 py-3.5 text-sm font-semibold text-white shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:bg-navy-800 hover:shadow-lift focus-visible:ring-2 focus-visible:ring-navy-900 focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
           >
-            {sent ? (
+            {submitting ? (
+              <>
+                <span
+                  className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white"
+                  aria-hidden="true"
+                />
+                Guardando mensaje...
+              </>
+            ) : sent ? (
               <>
                 <CheckCircle2 size={18} aria-hidden="true" />
-                ¡Mensaje listo para enviar!
+                ¡Mensaje enviado!
               </>
             ) : (
               <>
@@ -307,14 +343,25 @@ export default function Contact() {
           </button>
 
 
-
-          
-
-          <p className="text-center font-mono text-xs text-navy-900/45" role="status">
-            {sent
-              ? 'Abrimos WhatsApp con tu mensaje. ¡Gracias por escribirnos!'
-              : 'Al enviar abriremos WhatsApp con tu mensaje precargado.'}
-          </p>
+        <div
+          className="text-center font-mono text-xs"
+          role="status"
+          aria-live="polite"
+        >
+          {submitError ? (
+            <p className="text-red-500">
+              {submitError}
+            </p>
+          ) : sent ? (
+            <p className="text-emerald-brand">
+              Recibimos tu mensaje. Uno de nosotros te responderá pronto.
+            </p>
+          ) : (
+            <p className="text-navy-900/45">
+              Tus datos se utilizarán únicamente para responder tu solicitud.
+            </p>
+          )}
+        </div>
         </motion.form>
       </div>
     </Section>
