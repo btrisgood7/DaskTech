@@ -44,3 +44,6 @@ coverage/
 vite.config.js.timestamp-*
 vite.config.*.timestamp-*
 *.timestamp-*.mjs
+
+#Info de referencia
+referencias
