@@ -68,7 +68,7 @@ export const team = [
     name: 'Celia Hernandez',
     role: 'Cofundador · Desarrollo Odoo & Python',
     bio: 'Le encanta convertir procesos enredados en sistemas simples que de verdad funcionan.',
-    stack: ['Odoo', 'Python','Soporte'],
+    stack: ['Odoo', 'Python','Soporte','Linux'],
     photo: 'team/celia1.jpeg',
   },
   {
@@ -80,16 +80,16 @@ export const team = [
   },
   {
     name: 'Kirsten Robles',
-    role: 'Cofundador · Redes & Soporte Técnico',
+    role: 'Cofundador · Desarrollo movíl y soporte técnico',
     bio: 'Convierte ideas en aplicaciones que caben en tu bolsillo, cuidando cada pantalla, interacción y detalle.',
-    stack: ['Flutter', 'Dart'],
+    stack: ['Flutter', 'Dart','CCTV'],
     photo: ['team/kirsten.jpeg']
   },
   {
     name: 'Diego Guerrero',
-    role: 'Cofundador · Infraestructura, redes y soporte técnico',
+    role: 'Cofundador · Desarrollo, redes y soporte técnico',
     bio: 'Cuida que tus equipos, cámaras y espacios funcionen sin sorpresas.',
-    stack: ['CCTV','SQL','Java'],
+    stack: ['Python','SQL','Java','APIs'],
     photo: ['team/diego.jpeg']
   },
 ]

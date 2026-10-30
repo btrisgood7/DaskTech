@@ -85,6 +85,11 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
+    // Honeypot: un humano no ve este campo; si viene lleno, es un bot
+    if (e.target.elements.website?.value) {
+      return
+    }
+
     const next = validate()
 
     if (Object.keys(next).length) {
@@ -119,7 +124,9 @@ export default function Contact() {
         setSent(false)
       }, 6000)
     } catch (error) {
-      console.error('Error al guardar el formulario:', error)
+      if (import.meta.env.DEV) {
+        console.error('Error al guardar el formulario:', error)
+      }
 
       setSubmitError(
         'No pudimos guardar tu mensaje. Inténtalo nuevamente o escríbenos por WhatsApp.'
@@ -215,6 +222,14 @@ export default function Contact() {
           noValidate
           className="card space-y-5 p-7 lg:col-span-3"
         >
+          <input
+            type="text"
+            name="website"
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+            className="absolute left-[-9999px] h-0 w-0 opacity-0"
+          />
           <div className="grid gap-5 sm:grid-cols-2">
             <div>
               <label htmlFor="name" className="mb-2 block text-sm font-medium text-navy-900/80">
